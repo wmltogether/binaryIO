@@ -78,11 +78,13 @@ class BinaryWriter:
         self.base_stream.write(value[:count])
         
     def Write7BitEncodedInt(self , value):
+        if value == 0:
+            self.WriteByte(chr(value))
         while value != 0:
-            num = (value >> 7) & 0x01ffffff
+            num =  (value >> 7) & 0x1ffffff;
             num2 = value & 0x7f
             if num != 0:
-                num2 = num | 0x80
+                num2 = num2 | 0x80
             self.WriteByte(chr(num2))
             value = num
             
