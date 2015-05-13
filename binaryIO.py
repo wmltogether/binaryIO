@@ -37,6 +37,23 @@ class BinaryReader:
     def ReadFloat(self):
         return struct.unpack('f' , self.base_stream.read(4))[0]
     
+    def ReadBEInt16(self):
+        return struct.unpack('>h' , self.base_stream.read(2))[0]
+    
+    def ReadBEInt32(self):
+        return struct.unpack('>i' , self.base_stream.read(4))[0]
+    
+    def ReadBEInt64(self):
+        return struct.unpack('>q' , self.base_stream.read(8))[0]
+
+    def ReadBEUInt16(self):
+        return struct.unpack('>H' , self.base_stream.read(2))[0]
+    
+    def ReadBEUInt32(self):
+        return struct.unpack('>I' , self.base_stream.read(4))[0]
+    
+    def ReadBEUInt64(self):
+        return struct.unpack('>Q' , self.base_stream.read(8))[0]
     
     def Read7BitEncodedInt(self):
         a , b, c = 0 , 0 ,0
